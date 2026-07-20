@@ -6,7 +6,7 @@ The function should:
 Remove duplicates
 Handle missing values differently based on datatype
 Convert Yes/No columns to binary
-Rename all columns to snake_case
+Rename all columns to title_case
 Remove unnecessary spaces
 Correct inconsistent text (e.g., uppercase/lowercase)
 Remove impossible values (negative costs, invalid ratings)
