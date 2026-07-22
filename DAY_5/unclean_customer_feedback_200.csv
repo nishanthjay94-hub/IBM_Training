@@ -1,0 +1,201 @@
+Review_ID,Customer_Name,Email,Feedback,Expected_Sentiment
+1001,Barbara Garcia,barbara.garcia70@yahoo.com,<div>Loved the sleek design</div> and amazing functionality!!!,Positive
+1002,Lisa Lee,lisa.lee52@hotmail.com,The item arrived yesterday. I haven't used it yet. Contact us at support1002@company.com for details.,Neutral
+1003,Andrew Hill,andrew.hill67@outlook.com,Worst product EVER!!! Completely useless & a total waste of money!!! More details: https://www.example.com/review/1003,Negative
+1004,Jennifer Thomas,jennifer.thomas32@yahoo.com,<div class='review'><b>I have used the product once so far. It seems okay.</b></div>,Neutral
+1005,Michael Wilson,michael.wilson44@gmail.com,I can't recommend this product. Very disappointing. Contact us at support1005@company.com for details.,Negative
+1006,Michelle Roberts,michelle.roberts71@yahoo.com,Worst product EVER!!! Completely useless & a total waste of money!!! More details: https://www.example.com/review/1006,Negative
+1007,Michelle Roberts,michelle.roberts29@gmail.com,Absolutely fantastic product!!! Highly recommended 😊,Positive
+1008,Michael Wilson,michael.wilson91@gmail.com,"<div class='review'><b>Fast delivery, great packaging, and excellent customer service!!! Contact us at support1008@company.com for details.</b></div>",Positive
+1009,Daniel Martinez,daniel.martinez9@gmail.com,So happy I bought this!!! Best decision EVER 😊😊😊 More details: https://www.example.com/review/1009,Positive
+1010,Nancy Hall,nancy.hall10@yahoo.com,So happy I bought this!!! Best decision EVER 😊😊😊,Positive
+1011,Margaret Rodriguez,margaret.rodriguez86@outlook.com,Extremely poor service!!! Nobody responded to my emails. Contact us at support1011@company.com for details.,Negative
+1012,Barbara Garcia,barbara.garcia70@yahoo.com,<div class='review'><b>The item looks exactly as described. More details: https://www.example.com/review/1012</b></div>,Neutral
+1013,Edward Perez,edward.perez74@outlook.com,Waste of money!!! Don't buy this product!!!,Negative
+1014,Susan Robinson,susan.robinson61@outlook.com,Brilliant purchase!!! Everything is perfect. Contact us at support1014@company.com for details.,Positive
+1015,Christopher Thompson,christopher.thompson13@gmail.com,Awful experience!!! The item was nothing like the description. More details: https://www.example.com/review/1015,Negative
+1016,Helen Lopez,helen.lopez46@outlook.com,<div class='review'><b>The item arrived yesterday. I haven't used it yet.</b></div>,Neutral
+1017,Paul Wright,paul.wright60@gmail.com,Great for the price!!! I am really happy with it. Contact us at support1017@company.com for details.,Positive
+1018,Robert Anderson,robert.anderson8@outlook.com,The product is broken!!! I want a refund immediately!!! More details: https://www.example.com/review/1018,Negative
+1019,Nancy Hall,nancy.hall14@yahoo.com,Good product!!! Good price!!! Good experience!!!,Positive
+1020,Christopher Thompson,christopher.thompson25@outlook.com,<div class='review'><b><h1>Perfect Product</h1> Exceeded all my expectations!!! ❤️ Contact us at support1020@company.com for details.</b></div>,Positive
+1021,William Jackson,william.jackson55@yahoo.com,This is the WORST purchase I have ever made!!! More details: https://www.example.com/review/1021,Negative
+1022,Margaret Rodriguez,margaret.rodriguez60@yahoo.com,The product is excellent and works exactly as promised.,Positive
+1023,Michael Wilson,michael.wilson57@gmail.com,"Fast delivery, great packaging, and excellent customer service!!! Contact us at support1023@company.com for details.",Positive
+1024,Emily Davis,emily.davis84@gmail.com,<div class='review'><b>The customer service was unhelpful and rude!!! More details: https://www.example.com/review/1024</b></div>,Negative
+1025,Jessica Taylor,jessica.taylor97@yahoo.com,"The packaging was damaged, but the product itself is okay.",Neutral
+1026,James Harris,james.harris53@outlook.com,It works as expected. Nothing extraordinary. Contact us at support1026@company.com for details.,Neutral
+1027,Joshua Green,joshua.green28@outlook.com,Would buy again!!! Highly recommended to everyone. More details: https://www.example.com/review/1027,Positive
+1028,Emily Davis,emily.davis22@outlook.com,<div class='review'><b>The product is broken!!! I want a refund immediately!!!</b></div>,Negative
+1029,John Smith,john.smith50@hotmail.com,Great for the price!!! I am really happy with it. Contact us at support1029@company.com for details.,Positive
+1030,Sandra Scott,sandra.scott37@outlook.com,The quality is acceptable for the price. More details: https://www.example.com/review/1030,Neutral
+1031,Donna Mitchell,donna.mitchell85@outlook.com,Very impressed with the quality and quick delivery!,Positive
+1032,Linda White,linda.white25@hotmail.com,<div class='review'><b>The item doesn't work at all!!! I am extremely disappointed. Contact us at support1032@company.com for details.</b></div>,Negative
+1033,Barbara Garcia,barbara.garcia8@gmail.com,Great value for money!!! I am very satisfied. More details: https://www.example.com/review/1033,Positive
+1034,Donald Walker,donald.walker8@gmail.com,Brilliant purchase!!! Everything is perfect.,Positive
+1035,Michelle Roberts,michelle.roberts62@yahoo.com,Terrible quality!!! Completely disappointed!!! Contact us at support1035@company.com for details.,Negative
+1036,Emily Davis,emily.davis66@gmail.com,<div class='review'><b>Excellent service!!! Very professional and friendly staff 😊 More details: https://www.example.com/review/1036</b></div>,Positive
+1037,Patricia Martin,patricia.martin9@gmail.com,<p>Amazing quality!!!</p> I am VERY happy with my purchase 😍😍,Positive
+1038,Susan Robinson,susan.robinson52@gmail.com,Nothing particularly impressive or disappointing about it. Contact us at support1038@company.com for details.,Neutral
+1039,Edward Perez,edward.perez32@gmail.com,Great value for money!!! I am very satisfied. More details: https://www.example.com/review/1039,Positive
+1040,Carol Phillips,carol.phillips11@outlook.com,<div class='review'><b>It does what it is supposed to do.</b></div>,Neutral
+1041,Michelle Roberts,michelle.roberts73@hotmail.com,The product arrived on time and was properly packed. Contact us at support1041@company.com for details.,Neutral
+1042,Matthew Clark,matthew.clark27@hotmail.com,I LOVE this product!!! It works PERFECTLY 😊. Visit https://example.com for more info! More details: https://www.example.com/review/1042,Positive
+1043,Susan Robinson,susan.robinson34@outlook.com,Good product!!! Good price!!! Good experience!!!,Positive
+1044,William Jackson,william.jackson86@hotmail.com,<div class='review'><b>The item was delivered LATE and DAMAGED!!! Very disappointing. Contact us at support1044@company.com for details.</b></div>,Negative
+1045,Sandra Scott,sandra.scott41@gmail.com,The product is okay... nothing special. More details: https://www.example.com/review/1045,Neutral
+1046,John Smith,john.smith59@gmail.com,Great value for money!!! I am very satisfied.,Positive
+1047,Michael Wilson,michael.wilson69@yahoo.com,Cheap material!!! Definitely NOT worth the money. Contact us at support1047@company.com for details.,Negative
+1048,Kenneth Baker,kenneth.baker34@yahoo.com,<div class='review'><b>The customer service was unhelpful and rude!!! More details: https://www.example.com/review/1048</b></div>,Negative
+1049,Mark Allen,mark.allen9@yahoo.com,Absolutely fantastic product!!! Highly recommended 😊,Positive
+1050,Karen Young,karen.young37@yahoo.com,Terrible quality!!! Completely disappointed!!! Contact us at support1050@company.com for details.,Negative
+1051,Andrew Hill,andrew.hill70@hotmail.com,Cheap material!!! Definitely NOT worth the money. More details: https://www.example.com/review/1051,Negative
+1052,Carol Phillips,carol.phillips84@gmail.com,<div class='review'><b>The product arrived damaged and the packaging was terrible.</b></div>,Negative
+1053,Donna Mitchell,donna.mitchell39@gmail.com,The colors are dull & lifeless... not happy with this purchase. Contact us at support1053@company.com for details.,Negative
+1054,William Jackson,william.jackson34@gmail.com,Cheap material!!! Definitely NOT worth the money. More details: https://www.example.com/review/1054,Negative
+1055,Robert Anderson,robert.anderson96@yahoo.com,<h1>Perfect Product</h1> Exceeded all my expectations!!! ❤️,Positive
+1056,Margaret Rodriguez,margaret.rodriguez37@yahoo.com,<div class='review'><b>I LOVE this product!!! It works PERFECTLY 😊. Visit https://example.com for more info! Contact us at support1056@company.com for details.</b></div>,Positive
+1057,Nancy Hall,nancy.hall27@hotmail.com,The delivery was on time. The product is average. More details: https://www.example.com/review/1057,Neutral
+1058,Kenneth Baker,kenneth.baker63@hotmail.com,It does what it is supposed to do.,Neutral
+1059,Emily Davis,emily.davis12@outlook.com,Brilliant purchase!!! Everything is perfect. Contact us at support1059@company.com for details.,Positive
+1060,Margaret Rodriguez,margaret.rodriguez6@gmail.com,<div class='review'><b>Terrible experience!!! The product stopped working after 2 days. NOT recommended!!! More details: https://www.example.com/review/1060</b></div>,Negative
+1061,Nancy Hall,nancy.hall99@yahoo.com,The item doesn't work at all!!! I am extremely disappointed.,Negative
+1062,Matthew Clark,matthew.clark21@outlook.com,Customer support was incredibly helpful and friendly. Contact us at support1062@company.com for details.,Positive
+1063,Donna Mitchell,donna.mitchell91@outlook.com,Extremely poor service!!! Nobody responded to my emails. More details: https://www.example.com/review/1063,Negative
+1064,Donna Mitchell,donna.mitchell2@gmail.com,<div class='review'><b>The product is fairly standard and works normally.</b></div>,Neutral
+1065,Michael Wilson,michael.wilson89@yahoo.com,The product arrived damaged and the packaging was terrible. Contact us at support1065@company.com for details.,Negative
+1066,George Carter,george.carter5@hotmail.com,Customer support was incredibly helpful and friendly. More details: https://www.example.com/review/1066,Positive
+1067,Michelle Roberts,michelle.roberts71@yahoo.com,The product arrived damaged and the packaging was terrible.,Negative
+1068,Helen Lopez,helen.lopez17@gmail.com,<div class='review'><b>This is one of the BEST purchases I have ever made!!! Contact us at support1068@company.com for details.</b></div>,Positive
+1069,Lisa Lee,lisa.lee47@gmail.com,I absolutely LOVE the quality!!! 10/10 👍 More details: https://www.example.com/review/1069,Positive
+1070,Mark Allen,mark.allen27@yahoo.com,"Delivery took a few days, which was expected.",Neutral
+1071,Robert Anderson,robert.anderson46@outlook.com,The customer service was unhelpful and rude!!! Contact us at support1071@company.com for details.,Negative
+1072,Carol Phillips,carol.phillips96@yahoo.com,"<div class='review'><b>Overall, it is an average experience. More details: https://www.example.com/review/1072</b></div>",Neutral
+1073,Susan Robinson,susan.robinson21@yahoo.com,Great for the price!!! I am really happy with it.,Positive
+1074,Paul Wright,paul.wright4@yahoo.com,The item was delivered LATE and DAMAGED!!! Very disappointing. Contact us at support1074@company.com for details.,Negative
+1075,Nancy Hall,nancy.hall53@yahoo.com,The product is okay. I may or may not buy it again. More details: https://www.example.com/review/1075,Neutral
+1076,Margaret Rodriguez,margaret.rodriguez21@gmail.com,<div class='review'><b><div>Loved the sleek design</div> and amazing functionality!!!</b></div>,Positive
+1077,Steven Hernandez,steven.hernandez5@outlook.com,The item was delivered LATE and DAMAGED!!! Very disappointing. Contact us at support1077@company.com for details.,Negative
+1078,Daniel Martinez,daniel.martinez26@outlook.com,This is one of the BEST purchases I have ever made!!! More details: https://www.example.com/review/1078,Positive
+1079,Mark Allen,mark.allen40@yahoo.com,I absolutely LOVE the quality!!! 10/10 👍,Positive
+1080,Daniel Martinez,daniel.martinez4@yahoo.com,<div class='review'><b>The product is fairly standard and works normally. Contact us at support1080@company.com for details.</b></div>,Neutral
+1081,Betty King,betty.king43@hotmail.com,Cheap material!!! Definitely NOT worth the money. More details: https://www.example.com/review/1081,Negative
+1082,Michael Wilson,michael.wilson99@hotmail.com,Awful experience!!! The item was nothing like the description.,Negative
+1083,Mark Allen,mark.allen83@outlook.com,Very bad experience!!! Customer support did NOT help me. Contact us at support1083@company.com for details.,Negative
+1084,George Carter,george.carter43@gmail.com,<div class='review'><b>Terrible quality!!! Completely disappointed!!! More details: https://www.example.com/review/1084</b></div>,Negative
+1085,Jennifer Thomas,jennifer.thomas34@yahoo.com,The item doesn't work at all!!! I am extremely disappointed.,Negative
+1086,Michelle Roberts,michelle.roberts34@gmail.com,Absolutely fantastic product!!! Highly recommended 😊 Contact us at support1086@company.com for details.,Positive
+1087,Robert Anderson,robert.anderson77@outlook.com,Customer support was incredibly helpful and friendly. More details: https://www.example.com/review/1087,Positive
+1088,Mark Allen,mark.allen94@hotmail.com,<div class='review'><b>Terrible experience!!! The product stopped working after 2 days. NOT recommended!!!</b></div>,Negative
+1089,Helen Lopez,helen.lopez78@gmail.com,The colors are dull & lifeless... not happy with this purchase. Contact us at support1089@company.com for details.,Negative
+1090,Steven Hernandez,steven.hernandez74@yahoo.com,Nothing particularly impressive or disappointing about it. More details: https://www.example.com/review/1090,Neutral
+1091,Matthew Clark,matthew.clark6@outlook.com,<h1>Perfect Product</h1> Exceeded all my expectations!!! ❤️,Positive
+1092,John Smith,john.smith67@yahoo.com,<div class='review'><b>The colors are dull & lifeless... not happy with this purchase. Contact us at support1092@company.com for details.</b></div>,Negative
+1093,Karen Young,karen.young56@gmail.com,Waste of money!!! Don't buy this product!!! More details: https://www.example.com/review/1093,Negative
+1094,Nancy Hall,nancy.hall80@hotmail.com,Terrible experience!!! The product stopped working after 2 days. NOT recommended!!!,Negative
+1095,Jennifer Thomas,jennifer.thomas93@hotmail.com,The product arrived damaged and the packaging was terrible. Contact us at support1095@company.com for details.,Negative
+1096,Kenneth Baker,kenneth.baker40@outlook.com,<div class='review'><b>Great value for money!!! I am very satisfied. More details: https://www.example.com/review/1096</b></div>,Positive
+1097,Donald Walker,donald.walker52@hotmail.com,Would buy again!!! Highly recommended to everyone.,Positive
+1098,Donna Mitchell,donna.mitchell17@yahoo.com,The product arrived today. The box was sealed. Contact us at support1098@company.com for details.,Neutral
+1099,Paul Wright,paul.wright86@outlook.com,NOT good!!! The product quality is extremely poor. More details: https://www.example.com/review/1099,Negative
+1100,Patricia Martin,patricia.martin79@hotmail.com,<div class='review'><b>Wonderful experience! I will definitely purchase again.</b></div>,Positive
+1101,Betty King,betty.king71@gmail.com,The quality is acceptable for the price. Contact us at support1101@company.com for details.,Neutral
+1102,Lisa Lee,lisa.lee37@yahoo.com,So happy I bought this!!! Best decision EVER 😊😊😊 More details: https://www.example.com/review/1102,Positive
+1103,Helen Lopez,helen.lopez75@hotmail.com,Excellent service!!! Very professional and friendly staff 😊,Positive
+1104,Sandra Scott,sandra.scott57@outlook.com,<div class='review'><b>The product is neither good nor bad. Just average. Contact us at support1104@company.com for details.</b></div>,Neutral
+1105,Barbara Garcia,barbara.garcia66@outlook.com,This is the WORST purchase I have ever made!!! More details: https://www.example.com/review/1105,Negative
+1106,James Harris,james.harris85@gmail.com,Awful experience!!! The item was nothing like the description.,Negative
+1107,Anthony Lewis,anthony.lewis66@hotmail.com,I can't recommend this product. Very disappointing. Contact us at support1107@company.com for details.,Negative
+1108,Jessica Taylor,jessica.taylor97@yahoo.com,<div class='review'><b>The item was delivered LATE and DAMAGED!!! Very disappointing. More details: https://www.example.com/review/1108</b></div>,Negative
+1109,Lisa Lee,lisa.lee29@yahoo.com,"The item is fine, but I have not tested all features.",Neutral
+1110,Linda White,linda.white4@gmail.com,Very disappointing!!! I expected MUCH better quality. Contact us at support1110@company.com for details.,Negative
+1111,Susan Robinson,susan.robinson61@gmail.com,"The item is fine, but I have not tested all features. More details: https://www.example.com/review/1111",Neutral
+1112,Sandra Scott,sandra.scott54@yahoo.com,<div class='review'><b>Terrible experience!!! The product stopped working after 2 days. NOT recommended!!!</b></div>,Negative
+1113,Steven Hernandez,steven.hernandez64@outlook.com,I absolutely LOVE the quality!!! 10/10 👍 Contact us at support1113@company.com for details.,Positive
+1114,Susan Robinson,susan.robinson19@gmail.com,Fantastic!!! I will tell ALL my friends about it 😍 More details: https://www.example.com/review/1114,Positive
+1115,Robert Anderson,robert.anderson55@yahoo.com,The delivery was average and the product is acceptable.,Neutral
+1116,Patricia Martin,patricia.martin90@outlook.com,<div class='review'><b>Awful experience!!! The item was nothing like the description. Contact us at support1116@company.com for details.</b></div>,Negative
+1117,Emily Davis,emily.davis72@yahoo.com,Very bad experience!!! Customer support did NOT help me. More details: https://www.example.com/review/1117,Negative
+1118,Jennifer Thomas,jennifer.thomas59@yahoo.com,NOT good!!! The product quality is extremely poor.,Negative
+1119,Sandra Scott,sandra.scott86@hotmail.com,Horrible!!! The product broke immediately after opening the box. Contact us at support1119@company.com for details.,Negative
+1120,Andrew Hill,andrew.hill79@outlook.com,<div class='review'><b><p>Amazing quality!!!</p> I am VERY happy with my purchase 😍😍 More details: https://www.example.com/review/1120</b></div>,Positive
+1121,Donna Mitchell,donna.mitchell58@yahoo.com,Worst product EVER!!! Completely useless & a total waste of money!!!,Negative
+1122,Joshua Green,joshua.green58@hotmail.com,Very impressed with the quality and quick delivery! Contact us at support1122@company.com for details.,Positive
+1123,Susan Robinson,susan.robinson82@hotmail.com,Excellent service!!! Very professional and friendly staff 😊 More details: https://www.example.com/review/1123,Positive
+1124,Kimberly Nelson,kimberly.nelson63@yahoo.com,<div class='review'><b>The item doesn't work at all!!! I am extremely disappointed.</b></div>,Negative
+1125,Margaret Rodriguez,margaret.rodriguez57@gmail.com,The product arrived today. The box was sealed. Contact us at support1125@company.com for details.,Neutral
+1126,Anthony Lewis,anthony.lewis31@hotmail.com,This is the WORST purchase I have ever made!!! More details: https://www.example.com/review/1126,Negative
+1127,Nancy Hall,nancy.hall41@gmail.com,Very bad experience!!! Customer support did NOT help me.,Negative
+1128,William Jackson,william.jackson20@yahoo.com,<div class='review'><b>Fantastic!!! I will tell ALL my friends about it 😍 Contact us at support1128@company.com for details.</b></div>,Positive
+1129,Steven Hernandez,steven.hernandez89@yahoo.com,Absolutely fantastic product!!! Highly recommended 😊 More details: https://www.example.com/review/1129,Positive
+1130,Barbara Garcia,barbara.garcia9@outlook.com,The product is broken!!! I want a refund immediately!!!,Negative
+1131,Paul Wright,paul.wright43@outlook.com,Very disappointing!!! I expected MUCH better quality. Contact us at support1131@company.com for details.,Negative
+1132,Paul Wright,paul.wright8@yahoo.com,<div class='review'><b><p>Amazing quality!!!</p> I am VERY happy with my purchase 😍😍 More details: https://www.example.com/review/1132</b></div>,Positive
+1133,Paul Wright,paul.wright50@gmail.com,Terrible quality!!! Completely disappointed!!!,Negative
+1134,Edward Perez,edward.perez49@outlook.com,Extremely poor service!!! Nobody responded to my emails. Contact us at support1134@company.com for details.,Negative
+1135,John Smith,john.smith46@hotmail.com,"Overall, it is an average experience. More details: https://www.example.com/review/1135",Neutral
+1136,Steven Hernandez,steven.hernandez54@yahoo.com,<div class='review'><b>I regret buying this product. It is a complete failure.</b></div>,Negative
+1137,Ashley Adams,ashley.adams29@hotmail.com,Great for the price!!! I am really happy with it. Contact us at support1137@company.com for details.,Positive
+1138,Helen Lopez,helen.lopez63@gmail.com,The product is okay... nothing special. More details: https://www.example.com/review/1138,Neutral
+1139,Steven Hernandez,steven.hernandez44@outlook.com,Horrible!!! The product broke immediately after opening the box.,Negative
+1140,James Harris,james.harris60@yahoo.com,<div class='review'><b>I absolutely LOVE the quality!!! 10/10 👍 Contact us at support1140@company.com for details.</b></div>,Positive
+1141,Carol Phillips,carol.phillips69@gmail.com,Customer support was incredibly helpful and friendly. More details: https://www.example.com/review/1141,Positive
+1142,Betty King,betty.king76@gmail.com,NOT good!!! The product quality is extremely poor.,Negative
+1143,Jessica Taylor,jessica.taylor83@outlook.com,Very impressed with the quality and quick delivery! Contact us at support1143@company.com for details.,Positive
+1144,William Jackson,william.jackson60@yahoo.com,<div class='review'><b>Excellent service!!! Very professional and friendly staff 😊 More details: https://www.example.com/review/1144</b></div>,Positive
+1145,Emily Davis,emily.davis34@outlook.com,NOT good!!! The product quality is extremely poor.,Negative
+1146,Donald Walker,donald.walker28@outlook.com,The product is excellent and works exactly as promised. Contact us at support1146@company.com for details.,Positive
+1147,Donald Walker,donald.walker44@outlook.com,Worst product EVER!!! Completely useless & a total waste of money!!! More details: https://www.example.com/review/1147,Negative
+1148,Margaret Rodriguez,margaret.rodriguez97@outlook.com,<div class='review'><b>I LOVE this product!!! It works PERFECTLY 😊. Visit https://example.com for more info!</b></div>,Positive
+1149,Matthew Clark,matthew.clark11@outlook.com,Extremely poor service!!! Nobody responded to my emails. Contact us at support1149@company.com for details.,Negative
+1150,Sarah Williams,sarah.williams96@gmail.com,Wonderful experience! I will definitely purchase again. More details: https://www.example.com/review/1150,Positive
+1151,Mark Allen,mark.allen29@gmail.com,I regret buying this product. It is a complete failure.,Negative
+1152,David Brown,david.brown97@gmail.com,<div class='review'><b>I regret buying this product. It is a complete failure. Contact us at support1152@company.com for details.</b></div>,Negative
+1153,Susan Robinson,susan.robinson26@gmail.com,Wonderful experience! I will definitely purchase again. More details: https://www.example.com/review/1153,Positive
+1154,Carol Phillips,carol.phillips20@yahoo.com,Would buy again!!! Highly recommended to everyone.,Positive
+1155,William Jackson,william.jackson61@gmail.com,Waste of money!!! Don't buy this product!!! Contact us at support1155@company.com for details.,Negative
+1156,Edward Perez,edward.perez28@outlook.com,<div class='review'><b>I can't recommend this product. Very disappointing. More details: https://www.example.com/review/1156</b></div>,Negative
+1157,Matthew Clark,matthew.clark99@hotmail.com,So happy I bought this!!! Best decision EVER 😊😊😊,Positive
+1158,James Harris,james.harris78@gmail.com,I regret buying this product. It is a complete failure. Contact us at support1158@company.com for details.,Negative
+1159,James Harris,james.harris40@gmail.com,It works as expected. Nothing extraordinary. More details: https://www.example.com/review/1159,Neutral
+1160,Michelle Roberts,michelle.roberts4@hotmail.com,<div class='review'><b>The item looks exactly as described.</b></div>,Neutral
+1161,Edward Perez,edward.perez87@outlook.com,The customer service was unhelpful and rude!!! Contact us at support1161@company.com for details.,Negative
+1162,Betty King,betty.king92@yahoo.com,The delivery was on time. The product is average. More details: https://www.example.com/review/1162,Neutral
+1163,Michael Wilson,michael.wilson76@yahoo.com,This is one of the BEST purchases I have ever made!!!,Positive
+1164,Robert Anderson,robert.anderson90@hotmail.com,<div class='review'><b>It is a decent product for its price... nothing more. Contact us at support1164@company.com for details.</b></div>,Neutral
+1165,Brian Turner,brian.turner16@gmail.com,Horrible!!! The product broke immediately after opening the box. More details: https://www.example.com/review/1165,Negative
+1166,Mark Allen,mark.allen69@outlook.com,The product is okay. I may or may not buy it again.,Neutral
+1167,Karen Young,karen.young9@hotmail.com,I LOVE this product!!! It works PERFECTLY 😊. Visit https://example.com for more info! Contact us at support1167@company.com for details.,Positive
+1168,John Smith,john.smith54@outlook.com,<div class='review'><b><p>Amazing quality!!!</p> I am VERY happy with my purchase 😍😍 More details: https://www.example.com/review/1168</b></div>,Positive
+1169,Robert Anderson,robert.anderson56@hotmail.com,Wonderful experience! I will definitely purchase again.,Positive
+1170,Sandra Scott,sandra.scott91@yahoo.com,The product is broken!!! I want a refund immediately!!! Contact us at support1170@company.com for details.,Negative
+1171,Helen Lopez,helen.lopez23@hotmail.com,Very disappointing!!! I expected MUCH better quality. More details: https://www.example.com/review/1171,Negative
+1172,Carol Phillips,carol.phillips69@outlook.com,<div class='review'><b>Brilliant purchase!!! Everything is perfect.</b></div>,Positive
+1173,Sandra Scott,sandra.scott56@hotmail.com,Horrible!!! The product broke immediately after opening the box. Contact us at support1173@company.com for details.,Negative
+1174,Donald Walker,donald.walker32@gmail.com,The product arrived on time and was properly packed. More details: https://www.example.com/review/1174,Neutral
+1175,Margaret Rodriguez,margaret.rodriguez58@yahoo.com,"The packaging was damaged, but the product itself is okay.",Neutral
+1176,Sandra Scott,sandra.scott73@outlook.com,<div class='review'><b>Good product!!! Good price!!! Good experience!!! Contact us at support1176@company.com for details.</b></div>,Positive
+1177,Nancy Hall,nancy.hall4@outlook.com,The colors are dull & lifeless... not happy with this purchase. More details: https://www.example.com/review/1177,Negative
+1178,Donald Walker,donald.walker24@outlook.com,"Delivery took a few days, which was expected.",Neutral
+1179,Barbara Garcia,barbara.garcia46@hotmail.com,Very disappointing!!! I expected MUCH better quality. Contact us at support1179@company.com for details.,Negative
+1180,Nancy Hall,nancy.hall36@hotmail.com,<div class='review'><b>Very bad experience!!! Customer support did NOT help me. More details: https://www.example.com/review/1180</b></div>,Negative
+1181,Donna Mitchell,donna.mitchell2@yahoo.com,This is one of the BEST purchases I have ever made!!!,Positive
+1182,Jessica Taylor,jessica.taylor31@outlook.com,The product is excellent and works exactly as promised. Contact us at support1182@company.com for details.,Positive
+1183,Ashley Adams,ashley.adams72@yahoo.com,<h1>Perfect Product</h1> Exceeded all my expectations!!! ❤️ More details: https://www.example.com/review/1183,Positive
+1184,Joshua Green,joshua.green83@outlook.com,<div class='review'><b>Would buy again!!! Highly recommended to everyone.</b></div>,Positive
+1185,Andrew Hill,andrew.hill3@gmail.com,Fantastic!!! I will tell ALL my friends about it 😍 Contact us at support1185@company.com for details.,Positive
+1186,Anthony Lewis,anthony.lewis29@outlook.com,Waste of money!!! Don't buy this product!!! More details: https://www.example.com/review/1186,Negative
+1187,Susan Robinson,susan.robinson40@hotmail.com,I can't recommend this product. Very disappointing.,Negative
+1188,Joshua Green,joshua.green71@hotmail.com,"<div class='review'><b>Fast delivery, great packaging, and excellent customer service!!! Contact us at support1188@company.com for details.</b></div>",Positive
+1189,Helen Lopez,helen.lopez96@hotmail.com,This is the WORST purchase I have ever made!!! More details: https://www.example.com/review/1189,Negative
+1190,Mark Allen,mark.allen90@outlook.com,I have used the product once so far. It seems okay.,Neutral
+1191,Margaret Rodriguez,margaret.rodriguez40@hotmail.com,<div>Loved the sleek design</div> and amazing functionality!!! Contact us at support1191@company.com for details.,Positive
+1192,Daniel Martinez,daniel.martinez16@yahoo.com,<div class='review'><b>It is a decent product for its price... nothing more. More details: https://www.example.com/review/1192</b></div>,Neutral
+1193,Donald Walker,donald.walker16@yahoo.com,The product is excellent and works exactly as promised.,Positive
+1194,Christopher Thompson,christopher.thompson28@outlook.com,Very impressed with the quality and quick delivery! Contact us at support1194@company.com for details.,Positive
+1195,Margaret Rodriguez,margaret.rodriguez93@hotmail.com,"Fast delivery, great packaging, and excellent customer service!!! More details: https://www.example.com/review/1195",Positive
+1196,Robert Anderson,robert.anderson25@hotmail.com,<div class='review'><b>Good product!!! Good price!!! Good experience!!!</b></div>,Positive
+1197,Daniel Martinez,daniel.martinez47@yahoo.com,The delivery was average and the product is acceptable. Contact us at support1197@company.com for details.,Neutral
+1198,Lisa Lee,lisa.lee2@yahoo.com,<div>Loved the sleek design</div> and amazing functionality!!! More details: https://www.example.com/review/1198,Positive
+1199,Margaret Rodriguez,margaret.rodriguez6@gmail.com,Fantastic!!! I will tell ALL my friends about it 😍,Positive
+1200,Donna Mitchell,donna.mitchell38@yahoo.com,<div class='review'><b>The product is neither good nor bad. Just average. Contact us at support1200@company.com for details.</b></div>,Neutral
