@@ -1,0 +1,44 @@
+START
+
+INPUT:
+    text
+    chunk_size
+    overlap
+
+CREATE an empty list called chunks
+
+SET start position = 0
+SET chunk ID = 0
+
+WHILE the start position is less than the length of the text:
+
+    Calculate the end position:
+        end = smaller of
+              (start position + chunk size)
+              OR
+              (length of text)
+
+    Extract a portion of the text
+    from start position up to end position
+
+    Create a chunk record containing:
+        - unique chunk ID
+        - extracted text
+        - starting position
+        - ending position
+        - length of the extracted text
+
+    Add the chunk record to the chunks list
+
+    Move the start position forward
+    BUT keep the specified overlap from the previous chunk
+
+    Increase the chunk ID by 1
+
+    IF the new start position has reached or passed
+    the end of the text:
+        STOP the loop
+
+RETURN the chunks list
+
+END
