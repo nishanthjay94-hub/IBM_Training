@@ -21,6 +21,39 @@ in particular how to program computers to process and analyze large amounts of n
 language data. The goal is a computer capable of understanding the contents of documents, 
 including the contextual nuances of the language within them.
 
+"""
+    Machine learning is a branch of artificial intelligence.
+    It allows computers to learn patterns from data and make
+    predictions without being explicitly programmed.
+    """,
+
+    """
+    Deep learning is a subset of machine learning that uses
+    artificial neural networks with multiple layers. Deep learning
+    is widely used for image recognition, speech recognition,
+    and natural language processing.
+    """,
+
+    """
+    Natural language processing is a field of artificial intelligence
+    that focuses on enabling computers to understand and process
+    human language. NLP is used in chatbots, sentiment analysis,
+    machine translation, and text classification.
+    """,
+
+    """
+    Computer vision enables computers to understand and analyze
+    images and videos. It is commonly used for object detection,
+    facial recognition, medical image analysis, and autonomous vehicles.
+    """,
+
+    """
+    Reinforcement learning is a machine learning technique in which
+    an agent learns by interacting with an environment. The agent
+    receives rewards for good actions and penalties for bad actions.
+    """
+]
+
 Retrieval Augmented Generation (RAG) is a technique that combines retrieval systems with 
 generative models. Instead of relying solely on the parametric knowledge stored in model 
 weights, RAG systems retrieve relevant documents from an external knowledge base and use 
