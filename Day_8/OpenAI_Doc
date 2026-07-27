@@ -1,0 +1,147 @@
+```python
+import streamlit as st
+import os
+from dotenv import load_dotenv
+from openai import OpenAI
+
+
+# ---------------------------------------
+# Load Environment Variables
+# ---------------------------------------
+
+load_dotenv()
+
+# Get OpenAI API Key
+api_key = os.getenv("OPENAI_API_KEY")
+
+
+# ---------------------------------------
+# OpenAI Client
+# ---------------------------------------
+
+client = OpenAI(
+    api_key=api_key
+)
+
+
+# ---------------------------------------
+# Streamlit UI
+# ---------------------------------------
+
+st.set_page_config(
+    page_title="OpenAI Chatbot"
+)
+
+st.title("🤖 OpenAI Chatbot")
+
+
+# ---------------------------------------
+# Chat Memory
+# ---------------------------------------
+
+if "messages" not in st.session_state:
+
+    st.session_state.messages = []
+
+
+# ---------------------------------------
+# Display Chat History
+# ---------------------------------------
+
+for message in st.session_state.messages:
+
+    with st.chat_message(message["role"]):
+
+        st.write(message["content"])
+
+
+# ---------------------------------------
+# User Input
+# ---------------------------------------
+
+prompt = st.chat_input(
+    "Ask me anything..."
+)
+
+
+# ---------------------------------------
+# Process User Input
+# ---------------------------------------
+
+if prompt:
+
+    # ---------------------------------------
+    # Save User Message
+    # ---------------------------------------
+
+    st.session_state.messages.append(
+        {
+            "role": "user",
+            "content": prompt
+        }
+    )
+
+
+    # ---------------------------------------
+    # Display User Message
+    # ---------------------------------------
+
+    with st.chat_message("user"):
+
+        st.write(prompt)
+
+
+    # ---------------------------------------
+    # Call OpenAI LLM
+    # ---------------------------------------
+
+    try:
+
+        response = client.chat.completions.create(
+
+            # OpenAI Model
+            model="gpt-4o-mini",
+
+            # Conversation History
+            messages=st.session_state.messages,
+
+            # Controls randomness
+            temperature=0.7,
+
+            # Maximum output tokens
+            max_tokens=1000
+        )
+
+
+        # ---------------------------------------
+        # Extract LLM Response
+        # ---------------------------------------
+
+        answer = response.choices[0].message.content
+
+
+    except Exception as e:
+
+        answer = f"Error:\n\n{e}"
+
+
+    # ---------------------------------------
+    # Save Assistant Response
+    # ---------------------------------------
+
+    st.session_state.messages.append(
+        {
+            "role": "assistant",
+            "content": answer
+        }
+    )
+
+
+    # ---------------------------------------
+    # Display Assistant Response
+    # ---------------------------------------
+
+    with st.chat_message("assistant"):
+
+        st.write(answer)
+```
