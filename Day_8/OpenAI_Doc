@@ -145,3 +145,16 @@ if prompt:
 
         st.write(answer)
 ```
+
+##list teh models
+----------------------------------------list models------------------------------------------
+import google.generativeai as genai
+
+genai.configure(
+    api_key="YOUR_API_KEY"
+)
+
+for model in genai.list_models():
+    print(model.name)
+
+
