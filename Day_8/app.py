@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 import google.generativeai as genai
 
-genai.configure(api_key="AQ.Ab8RN6Km7qUxv6m1NHNym8XWEomawbh_EImsQB2resnzr-bXlA")
+genai.configure(api_key="AQ.Ab8RN6Km7qUxv6m1NHNym8XWEomawbQB2resnzr-bXlA")
 
 for model in genai.list_models():
     print(model.name)
