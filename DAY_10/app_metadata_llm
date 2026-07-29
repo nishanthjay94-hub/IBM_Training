@@ -1,0 +1,1518 @@
+import os
+import re
+import json
+
+import streamlit as st
+import numpy as np
+import faiss
+
+from dotenv import load_dotenv
+from openai import OpenAI
+from pypdf import PdfReader
+
+from rank_bm25 import BM25Okapi
+
+
+# ============================================================
+# 1. LOAD ENVIRONMENT VARIABLES
+# ============================================================
+
+load_dotenv()
+
+api_key = os.getenv("OPENAI_API_KEY")
+
+if not api_key:
+
+    st.error(
+
+        "OPENAI_API_KEY is not loaded. "
+        "Please check your .env file."
+
+    )
+
+    st.stop()
+
+
+client = OpenAI(
+
+    api_key=api_key
+
+)
+
+
+# ============================================================
+# 2. PAGE CONFIGURATION
+# ============================================================
+
+st.set_page_config(
+
+    page_title="LLM Metadata RAG",
+
+    page_icon="🤖",
+
+    layout="wide"
+
+)
+
+
+# ============================================================
+# 3. TITLE
+# ============================================================
+
+st.title(
+
+    "🤖 Multi-PDF RAG - LLM Metadata Filtering"
+
+)
+
+
+st.write(
+
+    "The LLM decides which document category "
+    "should be searched before retrieval."
+
+)
+
+
+# ============================================================
+# 4. ALLOWED CATEGORIES
+# ============================================================
+
+ALLOWED_CATEGORIES = [
+
+    "HR",
+
+    "Finance",
+
+    "IT",
+
+    "Legal",
+
+    "All"
+
+]
+
+
+# ============================================================
+# 5. EXTRACT TEXT
+# ============================================================
+
+def extract_text_from_pdf(
+
+    pdf_file
+
+):
+
+    pdf_reader = PdfReader(
+
+        pdf_file
+
+    )
+
+
+    pages_text = []
+
+
+    for page_number, page in enumerate(
+
+        pdf_reader.pages
+
+    ):
+
+
+        text = page.extract_text()
+
+
+        if text:
+
+
+            pages_text.append({
+
+                "page":
+
+                page_number + 1,
+
+
+                "text":
+
+                text
+
+            })
+
+
+    return pages_text
+
+
+# ============================================================
+# 6. TOKENIZATION
+# ============================================================
+
+def tokenize_text(
+
+    text
+
+):
+
+    return re.findall(
+
+        r"\b\w+\b",
+
+        text.lower()
+
+    )
+
+
+# ============================================================
+# 7. CREATE CHUNKS
+# ============================================================
+
+def create_chunks(
+
+    pages_text,
+
+    filename,
+
+    category,
+
+    chunk_size=500,
+
+    chunk_overlap=100
+
+):
+
+    chunks = []
+
+
+    for page in pages_text:
+
+
+        text = page["text"]
+
+
+        page_number = page["page"]
+
+
+        start = 0
+
+
+        while start < len(text):
+
+
+            end = start + chunk_size
+
+
+            chunk_text = text[
+
+                start:end
+
+            ]
+
+
+            if chunk_text.strip():
+
+
+                chunks.append({
+
+                    "id":
+
+                    len(chunks),
+
+
+                    "text":
+
+                    chunk_text,
+
+
+                    "page":
+
+                    page_number,
+
+
+                    "filename":
+
+                    filename,
+
+
+                    "category":
+
+                    category
+
+                })
+
+
+            start = (
+
+                end
+
+                -
+
+                chunk_overlap
+
+            )
+
+
+    return chunks
+
+
+# ============================================================
+# 8. CREATE EMBEDDING
+# ============================================================
+
+def create_embedding(
+
+    text
+
+):
+
+
+    response = client.embeddings.create(
+
+        model="text-embedding-3-small",
+
+        input=text
+
+    )
+
+
+    return response.data[0].embedding
+
+
+# ============================================================
+# 9. CREATE FAISS INDEX
+# ============================================================
+
+def create_faiss_index(
+
+    chunks
+
+):
+
+    embeddings = []
+
+
+    for chunk in chunks:
+
+
+        embedding = create_embedding(
+
+            chunk["text"]
+
+        )
+
+
+        embeddings.append(
+
+            embedding
+
+        )
+
+
+    embeddings = np.array(
+
+        embeddings
+
+    ).astype(
+
+        "float32"
+
+    )
+
+
+    dimension = embeddings.shape[1]
+
+
+    index = faiss.IndexFlatL2(
+
+        dimension
+
+    )
+
+
+    index.add(
+
+        embeddings
+
+    )
+
+
+    return index
+
+
+# ============================================================
+# 10. CREATE BM25 INDEX
+# ============================================================
+
+def create_bm25_index(
+
+    chunks
+
+):
+
+
+    tokenized_documents = [
+
+        tokenize_text(
+
+            chunk["text"]
+
+        )
+
+        for chunk in chunks
+
+    ]
+
+
+    return BM25Okapi(
+
+        tokenized_documents
+
+    )
+
+
+# ============================================================
+# 11. LLM-BASED CATEGORY CLASSIFICATION
+# ============================================================
+
+def classify_query_with_llm(
+
+    query
+
+):
+
+
+    prompt = f"""
+
+You are a query classification system.
+
+
+Classify the user's question into exactly
+ONE of the following categories:
+
+
+HR
+
+Finance
+
+IT
+
+Legal
+
+All
+
+
+Category definitions:
+
+
+HR:
+Questions about employees, leave, salary,
+attendance, holidays, recruitment,
+performance, benefits, payroll.
+
+
+Finance:
+Questions about expenses, reimbursements,
+budgets, invoices, payments, taxes,
+purchases, and financial matters.
+
+
+IT:
+Questions about software, hardware,
+passwords, cybersecurity, networks,
+VPN, systems, laptops, and technical issues.
+
+
+Legal:
+Questions about contracts, agreements,
+compliance, regulations, laws,
+licenses, copyright, and legal matters.
+
+
+All:
+Use this when the question does not clearly
+belong to one category or requires information
+from multiple categories.
+
+
+User Question:
+
+{query}
+
+
+Return ONLY valid JSON in this format:
+
+
+{{
+    "category": "HR"
+}}
+
+
+Do not include any additional text.
+
+"""
+
+
+    response = client.chat.completions.create(
+
+        model="gpt-4o-mini",
+
+
+        messages=[
+
+            {
+
+                "role":
+
+                "system",
+
+
+                "content":
+
+                "You classify user queries "
+                "into predefined categories."
+
+            },
+
+
+            {
+
+                "role":
+
+                "user",
+
+
+                "content":
+
+                prompt
+
+            }
+
+        ],
+
+
+        temperature=0
+
+    )
+
+
+    content = (
+
+        response
+
+        .choices[0]
+
+        .message
+
+        .content
+
+    )
+
+
+    try:
+
+
+        result = json.loads(
+
+            content
+
+        )
+
+
+        category = result.get(
+
+            "category",
+
+            "All"
+
+        )
+
+
+        if category not in ALLOWED_CATEGORIES:
+
+            category = "All"
+
+
+        return category
+
+
+    except:
+
+
+        return "All"
+
+
+# ============================================================
+# 12. METADATA FILTERING
+# ============================================================
+
+def filter_chunks_by_category(
+
+    chunks,
+
+    category
+
+):
+
+
+    if category == "All":
+
+        return chunks
+
+
+    return [
+
+        chunk
+
+        for chunk in chunks
+
+        if chunk["category"] == category
+
+    ]
+
+
+# ============================================================
+# 13. SEMANTIC RETRIEVAL
+# ============================================================
+
+def semantic_retrieval(
+
+    query,
+
+    index,
+
+    chunks,
+
+    top_k=10
+
+):
+
+
+    query_embedding = create_embedding(
+
+        query
+
+    )
+
+
+    query_embedding = np.array(
+
+        [query_embedding]
+
+    ).astype(
+
+        "float32"
+
+    )
+
+
+    distances, indices = index.search(
+
+        query_embedding,
+
+        min(
+
+            top_k,
+
+            len(chunks)
+
+        )
+
+    )
+
+
+    results = []
+
+
+    for i in range(
+
+        len(indices[0])
+
+    ):
+
+
+        chunk_index = indices[0][i]
+
+
+        results.append({
+
+            "chunk_id":
+
+            chunks[chunk_index]["id"],
+
+
+            "text":
+
+            chunks[chunk_index]["text"],
+
+
+            "page":
+
+            chunks[chunk_index]["page"],
+
+
+            "filename":
+
+            chunks[chunk_index]["filename"],
+
+
+            "category":
+
+            chunks[chunk_index]["category"],
+
+
+            "distance":
+
+            float(
+
+                distances[0][i]
+
+            )
+
+        })
+
+
+    return results
+
+
+# ============================================================
+# 14. BM25 RETRIEVAL
+# ============================================================
+
+def keyword_retrieval(
+
+    query,
+
+    bm25,
+
+    chunks,
+
+    top_k=10
+
+):
+
+
+    tokenized_query = tokenize_text(
+
+        query
+
+    )
+
+
+    scores = bm25.get_scores(
+
+        tokenized_query
+
+    )
+
+
+    top_indices = np.argsort(
+
+        scores
+
+    )[
+
+        -min(
+
+            top_k,
+
+            len(chunks)
+
+        ):
+
+    ][
+
+        ::-1
+
+    ]
+
+
+    results = []
+
+
+    for index in top_indices:
+
+
+        results.append({
+
+            "chunk_id":
+
+            chunks[index]["id"],
+
+
+            "text":
+
+            chunks[index]["text"],
+
+
+            "page":
+
+            chunks[index]["page"],
+
+
+            "filename":
+
+            chunks[index]["filename"],
+
+
+            "category":
+
+            chunks[index]["category"],
+
+
+            "bm25_score":
+
+            float(
+
+                scores[index]
+
+            )
+
+        })
+
+
+    return results
+
+
+# ============================================================
+# 15. RRF
+# ============================================================
+
+def reciprocal_rank_fusion(
+
+    semantic_results,
+
+    keyword_results,
+
+    k=60
+
+):
+
+
+    rrf_scores = {}
+
+
+    chunk_data = {}
+
+
+    # Semantic results
+
+    for rank, result in enumerate(
+
+        semantic_results
+
+    ):
+
+
+        chunk_id = result[
+
+            "chunk_id"
+
+        ]
+
+
+        rrf_scores[chunk_id] = (
+
+            rrf_scores.get(
+
+                chunk_id,
+
+                0
+
+            )
+
+            +
+
+            1 /
+
+            (
+
+                k
+
+                +
+
+                rank
+
+                +
+
+                1
+
+            )
+
+        )
+
+
+        chunk_data[
+
+            chunk_id
+
+        ] = result
+
+
+    # BM25 results
+
+    for rank, result in enumerate(
+
+        keyword_results
+
+    ):
+
+
+        chunk_id = result[
+
+            "chunk_id"
+
+        ]
+
+
+        rrf_scores[chunk_id] = (
+
+            rrf_scores.get(
+
+                chunk_id,
+
+                0
+
+            )
+
+            +
+
+            1 /
+
+            (
+
+                k
+
+                +
+
+                rank
+
+                +
+
+                1
+
+            )
+
+        )
+
+
+        chunk_data[
+
+            chunk_id
+
+        ] = result
+
+
+    # Sort by RRF score
+
+    sorted_chunks = sorted(
+
+        rrf_scores.items(),
+
+        key=lambda x: x[1],
+
+        reverse=True
+
+    )
+
+
+    final_results = []
+
+
+    for chunk_id, score in sorted_chunks:
+
+
+        result = chunk_data[
+
+            chunk_id
+
+        ].copy()
+
+
+        result[
+
+            "rrf_score"
+
+        ] = score
+
+
+        final_results.append(
+
+            result
+
+        )
+
+
+    return final_results
+
+
+# ============================================================
+# 16. GENERATE FINAL ANSWER
+# ============================================================
+
+def generate_answer(
+
+    query,
+
+    retrieved_chunks
+
+):
+
+
+    context = ""
+
+
+    for chunk in retrieved_chunks:
+
+
+        context += f"""
+
+Document:
+
+{chunk["filename"]}
+
+
+Category:
+
+{chunk["category"]}
+
+
+Page:
+
+{chunk["page"]}
+
+
+Content:
+
+{chunk["text"]}
+
+"""
+
+
+    prompt = f"""
+
+You are a document question-answering assistant.
+
+
+Answer the user's question using ONLY
+the provided context.
+
+
+Do not use outside knowledge.
+
+
+If the answer is not available,
+say:
+
+"I could not find the answer
+in the uploaded documents."
+
+
+Mention the document name and page number
+when possible.
+
+
+Context:
+
+{context}
+
+
+User Question:
+
+{query}
+
+
+Answer:
+
+"""
+
+
+    response = client.chat.completions.create(
+
+        model="gpt-4o-mini",
+
+
+        messages=[
+
+            {
+
+                "role":
+
+                "system",
+
+
+                "content":
+
+                "Answer only using "
+                "retrieved document context."
+
+            },
+
+
+            {
+
+                "role":
+
+                "user",
+
+
+                "content":
+
+                prompt
+
+            }
+
+        ],
+
+
+        temperature=0
+
+    )
+
+
+    return (
+
+        response
+
+        .choices[0]
+
+        .message
+
+        .content
+
+    )
+
+
+# ============================================================
+# 17. MULTIPLE PDF UPLOAD
+# ============================================================
+
+uploaded_files = st.file_uploader(
+
+    "Upload multiple PDF documents",
+
+    type=["pdf"],
+
+    accept_multiple_files=True
+
+)
+
+
+# ============================================================
+# 18. PROCESS DOCUMENTS
+# ============================================================
+
+if uploaded_files:
+
+
+    all_chunks = []
+
+
+    with st.spinner(
+
+        "Processing uploaded PDFs..."
+
+    ):
+
+
+        for uploaded_file in uploaded_files:
+
+
+            # Extract text
+
+            pages_text = (
+
+                extract_text_from_pdf(
+
+                    uploaded_file
+
+                )
+
+            )
+
+
+            # ------------------------------------------------
+            # DEMO CATEGORY ASSIGNMENT
+            # ------------------------------------------------
+            # In production, this category can come from:
+            #
+            # 1. User selection
+            # 2. Filename
+            # 3. Database
+            # 4. Document classification LLM
+            #
+            # Here we use filename for simplicity.
+
+            filename_lower = (
+
+                uploaded_file.name.lower()
+
+            )
+
+
+            if "hr" in filename_lower:
+
+                category = "HR"
+
+
+            elif "finance" in filename_lower:
+
+                category = "Finance"
+
+
+            elif "it" in filename_lower:
+
+                category = "IT"
+
+
+            elif "legal" in filename_lower:
+
+                category = "Legal"
+
+
+            else:
+
+                category = "Other"
+
+
+            # Create chunks
+
+            pdf_chunks = create_chunks(
+
+                pages_text,
+
+                uploaded_file.name,
+
+                category
+
+            )
+
+
+            all_chunks.extend(
+
+                pdf_chunks
+
+            )
+
+
+    st.success(
+
+        f"Processed {len(uploaded_files)} PDFs "
+        f"and created {len(all_chunks)} chunks."
+
+    )
+
+
+    # ========================================================
+    # SHOW METADATA
+    # ========================================================
+
+    st.subheader(
+
+        "Uploaded Documents"
+
+    )
+
+
+    for filename in set(
+
+        chunk["filename"]
+
+        for chunk in all_chunks
+
+    ):
+
+
+        file_chunks = [
+
+            chunk
+
+            for chunk in all_chunks
+
+            if chunk["filename"] == filename
+
+        ]
+
+
+        st.write(
+
+            f"📄 {filename} | "
+
+            f"Category: "
+
+            f"{file_chunks[0]['category']}"
+
+        )
+
+
+    # ========================================================
+    # USER QUESTION
+    # ========================================================
+
+    query = st.text_input(
+
+        "Ask a question about your documents:"
+
+    )
+
+
+    if query:
+
+
+        # ====================================================
+        # LLM CLASSIFICATION
+        # ====================================================
+
+        with st.spinner(
+
+            "LLM is identifying the document category..."
+
+        ):
+
+
+            detected_category = (
+
+                classify_query_with_llm(
+
+                    query
+
+                )
+
+            )
+
+
+        st.info(
+
+            f"LLM detected category: "
+            f"**{detected_category}**"
+
+        )
+
+
+        # ====================================================
+        # METADATA FILTER
+        # ====================================================
+
+        filtered_chunks = (
+
+            filter_chunks_by_category(
+
+                all_chunks,
+
+                detected_category
+
+            )
+
+        )
+
+
+        if not filtered_chunks:
+
+
+            st.warning(
+
+                "No matching documents found."
+
+            )
+
+
+            st.stop()
+
+
+        st.write(
+
+            f"Searching "
+            f"{len(filtered_chunks)} chunks "
+            f"after metadata filtering."
+
+        )
+
+
+        # ====================================================
+        # CREATE FILTERED INDEXES
+        # ====================================================
+
+        with st.spinner(
+
+            "Creating filtered search indexes..."
+
+        ):
+
+
+            filtered_faiss = (
+
+                create_faiss_index(
+
+                    filtered_chunks
+
+                )
+
+            )
+
+
+            filtered_bm25 = (
+
+                create_bm25_index(
+
+                    filtered_chunks
+
+                )
+
+            )
+
+
+        # ====================================================
+        # SEMANTIC SEARCH
+        # ====================================================
+
+        semantic_results = (
+
+            semantic_retrieval(
+
+                query,
+
+                filtered_faiss,
+
+                filtered_chunks,
+
+                top_k=10
+
+            )
+
+        )
+
+
+        # ====================================================
+        # BM25 SEARCH
+        # ====================================================
+
+        keyword_results = (
+
+            keyword_retrieval(
+
+                query,
+
+                filtered_bm25,
+
+                filtered_chunks,
+
+                top_k=10
+
+            )
+
+        )
+
+
+        # ====================================================
+        # RRF
+        # ====================================================
+
+        reranked_results = (
+
+            reciprocal_rank_fusion(
+
+                semantic_results,
+
+                keyword_results
+
+            )
+
+        )
+
+
+        # Final top 3
+
+        final_results = (
+
+            reranked_results[:3]
+
+        )
+
+
+        # ====================================================
+        # GENERATE ANSWER
+        # ====================================================
+
+        with st.spinner(
+
+            "Generating answer..."
+
+        ):
+
+
+            answer = generate_answer(
+
+                query,
+
+                final_results
+
+            )
+
+
+        # ====================================================
+        # DISPLAY ANSWER
+        # ====================================================
+
+        st.subheader(
+
+            "Answer"
+
+        )
+
+
+        st.write(
+
+            answer
+
+        )
+
+
+        # ====================================================
+        # DISPLAY SOURCES
+        # ====================================================
+
+        st.subheader(
+
+            "Retrieved Sources"
+
+        )
+
+
+        for i, chunk in enumerate(
+
+            final_results
+
+        ):
+
+
+            with st.expander(
+
+                f"Result {i + 1} | "
+
+                f"{chunk['filename']} | "
+
+                f"Page {chunk['page']}"
+
+            ):
+
+
+                st.write(
+
+                    chunk["text"]
+
+                )
+
+
+                st.write(
+
+                    f"Category: "
+                    f"{chunk['category']}"
+
+                )
+
+
+                st.write(
+
+                    f"RRF Score: "
+                    f"{chunk['rrf_score']:.6f}"
+
+                )
+```
