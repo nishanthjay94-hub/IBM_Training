@@ -1,0 +1,98 @@
+# 12. RECIPROCAL RANK FUSION
+
+def reciprocal_rank_fusion(
+    semantic_results,
+    keyword_results,
+    k=60
+):
+
+    rrf_scores = {}
+
+    chunk_data = {}
+
+
+    # ----------------------------------------------
+    # Process Semantic Ranking
+    # ----------------------------------------------
+
+    for rank, result in enumerate(
+        semantic_results
+    ):
+
+        chunk_id = result["chunk_id"]
+
+        rrf_scores[chunk_id] = (
+
+            rrf_scores.get(
+                chunk_id,
+                0
+            )
+
+            +
+
+            1 / (k + rank + 1)
+
+        )
+
+        chunk_data[chunk_id] = result
+
+
+    # ----------------------------------------------
+    # Process Keyword Ranking
+    # ----------------------------------------------
+
+    for rank, result in enumerate(
+        keyword_results
+    ):
+
+        chunk_id = result["chunk_id"]
+
+        rrf_scores[chunk_id] = (
+
+            rrf_scores.get(
+                chunk_id,
+                0
+            )
+
+            +
+
+            1 / (k + rank + 1)
+
+        )
+
+        chunk_data[chunk_id] = result
+
+
+    # ----------------------------------------------
+    # Sort by RRF Score
+    # ----------------------------------------------
+
+    sorted_chunks = sorted(
+
+        rrf_scores.items(),
+
+        key=lambda x: x[1],
+
+        reverse=True
+
+    )
+
+
+    # ----------------------------------------------
+    # Create Final Results
+    # ----------------------------------------------
+
+    final_results = []
+
+    for chunk_id, score in sorted_chunks:
+
+        result = chunk_data[chunk_id].copy()
+
+        result["rrf_score"] = score
+
+        final_results.append(
+            result
+        )
+
+
+    return final_results
