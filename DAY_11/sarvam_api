@@ -1,0 +1,172 @@
+import os
+import requests
+import streamlit as st
+from dotenv import load_dotenv
+
+# --------------------------------------
+# Load Environment Variables
+# --------------------------------------
+
+load_dotenv()
+
+SARVAM_API_KEY = os.getenv("SARVAM_API_KEY")
+
+# --------------------------------------
+# Sarvam Configuration
+# --------------------------------------
+
+SARVAM_URL = "https://api.sarvam.ai/v1/chat/completions"
+
+HEADERS = {
+    "Authorization": f"Bearer {SARVAM_API_KEY}",
+    "Content-Type": "application/json"
+}
+
+# --------------------------------------
+# Streamlit UI
+# --------------------------------------
+
+st.set_page_config(
+    page_title="AI Interview Generator",
+    page_icon="🤖"
+)
+
+st.title("🤖 AI Interview Question Generator")
+
+st.write(
+    "Generate interview questions using Sarvam AI"
+)
+
+role = st.text_input(
+    "Job Role"
+)
+
+experience = st.number_input(
+    "Experience (Years)",
+    min_value=0,
+    max_value=30,
+    value=2
+)
+
+skills = st.text_area(
+    "Skills (Comma Separated)"
+)
+
+question_type = st.selectbox(
+    "Question Type",
+    [
+        "Technical",
+        "HR",
+        "Coding",
+        "Scenario Based",
+        "Mixed"
+    ]
+)
+
+num_questions = st.slider(
+    "Number of Questions",
+    1,
+    10,
+    5
+)
+
+# --------------------------------------
+# Generate Prompt
+# --------------------------------------
+
+def build_prompt():
+
+    return f"""
+You are a Senior Technical Interviewer.
+
+Generate {num_questions} interview questions.
+
+Candidate Details
+
+Role:
+{role}
+
+Experience:
+{experience} Years
+
+Skills:
+{skills}
+
+Question Type:
+{question_type}
+
+For each question provide
+
+1. Interview Question
+
+2. Expected Answer
+
+3. Difficulty Level
+
+Return the response in Markdown format.
+"""
+
+# --------------------------------------
+# Sarvam API Call
+# --------------------------------------
+
+def generate_questions(prompt):
+
+    payload = {
+
+        "model": "sarvam-m",
+
+        "messages": [
+
+            {
+                "role": "user",
+                "content": prompt
+            }
+
+        ],
+
+        "temperature": 0.5
+
+    }
+
+    response = requests.post(
+        SARVAM_URL,
+        headers=HEADERS,
+        json=payload
+    )
+
+    if response.status_code == 200:
+
+        data = response.json()
+
+        return data["choices"][0]["message"]["content"]
+
+    else:
+
+        return f"API Error\n\n{response.text}"
+
+# --------------------------------------
+# Button
+# --------------------------------------
+
+if st.button("Generate Interview Questions"):
+
+    if role == "" or skills == "":
+
+        st.warning(
+            "Please enter Role and Skills."
+        )
+
+    else:
+
+        prompt = build_prompt()
+
+        with st.spinner(
+            "Generating Questions..."
+        ):
+
+            answer = generate_questions(
+                prompt
+            )
+
+        st.markdown(answer)
