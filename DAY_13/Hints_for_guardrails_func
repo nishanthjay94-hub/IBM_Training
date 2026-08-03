@@ -1,0 +1,90 @@
+# SEMANTIC QUERY CACHE
+QUERY_CACHE = []
+CACHE_SIMILARITY_THRESHOLD = 0.95
+
+# SEMANTIC QUERY CACHE
+
+def check_query_cache(question):
+
+    """
+    Checks whether a semantically similar question
+    has already been answered.
+
+    Returns
+
+    True , cached_answer
+
+    or
+
+    False, embedding
+    """
+Function:
+    question_embedding = embedding_model.embed_query(question)
+
+    for item in QUERY_CACHE:
+
+        similarity = cosine_similarity(
+
+            [question_embedding],
+
+            [item["embedding"]]
+
+        )[0][0]
+
+        if similarity >= CACHE_SIMILARITY_THRESHOLD:
+
+            print("=" * 60)
+            print("CACHE HIT")
+            print("Similarity :", similarity)
+            print("=" * 60)
+
+            return True, item["answer"]
+
+    return False, question_embedding
+
+
+# SAVE CACHE
+
+def save_query_cache(question,
+                     embedding,
+                     answer):
+
+    QUERY_CACHE.append({
+        "question": question,
+        "embedding": embedding,
+        "answer": answer
+    })
+
+# PII DETECTION
+EMAIL_PATTERN = r"\S+@\S+\.\S+"
+PHONE_PATTERN = r"\b\d{10}\b"
+AADHAR_PATTERN = r"\b\d{4}\s?\d{4}\s?\d{4}\b"
+PAN_PATTERN = r"\b[A-Z]{5}[0-9]{4}[A-Z]\b"
+
+def mask_pii(question):
+
+    question = re.sub(
+        EMAIL_PATTERN,
+        "[EMAIL]",
+        question
+    )
+
+    question = re.sub(
+        PHONE_PATTERN,
+        "[PHONE]",
+        question
+    )
+
+    question = re.sub(
+        AADHAR_PATTERN,
+        "[AADHAR]",
+        question
+    )
+
+    question = re.sub(
+        PAN_PATTERN,
+        "[PAN]",
+        question
+    )
+
+    return True, question
